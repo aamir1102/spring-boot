@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th = "http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+    <link rel="icon" type="image/x-icon" th:href="@{/github-logo.png}">
+    <title>Customer Form</title>
+</head>
+<body>
+    <p>Customer Registration Form . The Field Marked With Asterisk(*) is mandatory</p>
+    <br><br>
+    <form th:action="@{/processForm}" th:object="${customer}" method="POST">
+        <label for="firstName">FirstName : </label>
+        <input type="text" th:field ="${customer.firstName}" id="firstName">
+        <br><br>
+
+        <label for="lastName">lastName(*) : </label>
+        <input type="text" th:field ="*{lastName}" id="lastName">
+
+        <span th:if="${#fields.hasErrors('lastName')}"
+              th:errors="*{lastName}"
+              class="error"
+        ></span>
+        <br><br>
+<!--        <span th:errors="*{lastName}" class="error"></span>-->
+
+        <label for="freePasses">freePasses(*) : </label>
+        <input type="text" th:field ="*{freePasses}" id="freePasses">
+
+        <span th:if="${#fields.hasErrors('freePasses')}"
+              th:errors="*{freePasses}"
+              class="error"
+        ></span>
+        <br><br>
+
+        <label for="postalCode">postalCode(*) : </label>
+        <input type="text" th:field ="*{postalCode}" id="postalCode">
+
+        <span th:if="${#fields.hasErrors('postalCode')}"
+              th:errors="*{postalCode}"
+              class="error"
+        ></span>
+        <br><br>
+
+        <label for="courseCode">courseCode(*) : </label>
+        <input type="text" th:field ="*{courseCode}" id="courseCode">
+
+        <span th:if="${#fields.hasErrors('courseCode')}"
+              th:errors="*{courseCode}"
+              class="error"
+        ></span>
+        <br><br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</body>
+</html>

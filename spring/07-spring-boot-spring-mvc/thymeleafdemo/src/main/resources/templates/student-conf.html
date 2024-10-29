@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+    <link rel="icon" type="image/x-icon" th:href="@{/github-logo.png}">
+    <title>Student Confirmation</title>
+</head>
+<body>
+    <h2>Student Confirmation Page</h2>
+    <p th:text=" 'The Confirmation Of your details -> '+${student.firstName}+' '+${student.lastName} " />
+    <p th:text="'Your Country is -> ' +${student.country}" />
+    <p th:text="'Your Chosen Programming Language -> '+${student.language} " />
+    <p>Operationg Systems Available for you are as follows :</p>
+    <ul>
+        <li th:each="os : ${student.systems}"
+            th:text="${os}"
+        />
+    </ul>
+</body>
+</html>
